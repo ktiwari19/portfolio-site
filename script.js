@@ -1,4 +1,6 @@
 console.log('Its working')
+const scriptURL = 'https://script.google.com/macros/s/AKfycbyVL9XWkIVc2vi97gsv-bBQqGjxs7USome2eHzdwmA/dev'
+const form = document.forms['google-sheet']
 
 let theme = localStorage.getItem('theme')
 
@@ -38,18 +40,11 @@ function setTheme(mode){
 
 	localStorage.setItem('theme', mode)
 }
-window.addEventListener("load", function() {
-  const form = document.getElementById('my-form');
-  form.addEventListener("submit", function(e) {
-    e.preventDefault();
-    const data = new FormData(form);
-    const action = e.target.action;
-    fetch(action, {
-      method: 'POST',
-      body: data,
-    })
-    .then(() => {
-      alert("Success!");
-    })
-  });
-});
+        
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+                .catch(error => console.error('Error!', error.message))
+            })
