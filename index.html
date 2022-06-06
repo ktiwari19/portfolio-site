@@ -173,7 +173,8 @@
         <form 
           id="my-form" 
           name="google-sheet"
-          method="POST" >
+          method="POST" 
+          action="https://script.google.com/macros/s/AKfycbyVL9XWkIVc2vi97gsv-bBQqGjxs7USome2eHzdwmA/dev"   >
           <a name="contact"></a>
           <label>Name</label>
           <input class="input-field" type="text" name="name" />
@@ -194,5 +195,24 @@
 
     <script type="text/javascript" src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+     $("#my-Form").submit(function(e) {
+
+    e.preventDefault(); // avoid to execute the actual submit of the form.
+
+    var form = $(this);
+    var actionUrl = form.attr('action');
+    
+    $.ajax({
+        type: "POST",
+        url: actionUrl,
+        data: form.serialize(), // serializes the form's elements.
+        success: function(data)
+        {
+          alert(data); // show response from the php script.
+        }
+    });
+    
+});</script>
   </body>
 </html>
