@@ -1,4 +1,6 @@
 console.log('Its working')
+// const scriptURL = 'https://script.google.com/macros/s/AKfycbyVL9XWkIVc2vi97gsv-bBQqGjxs7USome2eHzdwmA/dev'
+// const form = document.forms['google-sheet']
 
 let theme = localStorage.getItem('theme')
 
